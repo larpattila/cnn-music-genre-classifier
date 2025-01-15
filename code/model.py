@@ -6,7 +6,7 @@ class MyModel(Module):
 
     def __init__(self):
         """
-        Mymodel
+        Initializes the layers of the Mymodel
         """
 
         super().__init__()
@@ -36,18 +36,18 @@ class MyModel(Module):
         )
 
     def forward(self, x: Tensor) -> Tensor:
+
         x = x.unsqueeze(1)
-        #print(x.shape)
+
         x = self.block1(x)
-        #print(x.shape)
         x = self.block2(x)
-        #print(x.shape)
+
         x = x.view(x.size(0), -1)
-        #print(x.shape)
+
         x = self.fully_connected(x)
-        #print(x.shape)
+
         x = self.output(x)
-        #print(x.shape)
+
         return x
 
 def main():
